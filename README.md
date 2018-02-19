@@ -16,10 +16,8 @@ We can possibly split up the group in two subgroups. One subgroup will continue 
 
 [Official digit recognition TensorFlow tutorial](https://www.tensorflow.org/tutorials/layers).
 
-Best MNIST results so far: 
-[results](http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#4d4e495354).
+[Best MNIST results so far](http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#4d4e495354).
 
-How to implement DropConnect in TensorFlow: 
-[guide](https://nickcdryan.wordpress.com/2017/06/13/dropconnect-implementation-in-python-and-tensorflow/).
+[How to implement DropConnect in TensorFlow](https://nickcdryan.wordpress.com/2017/06/13/dropconnect-implementation-in-python-and-tensorflow/).
 
 [Google Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb).
