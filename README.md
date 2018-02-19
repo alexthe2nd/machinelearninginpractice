@@ -1,7 +1,5 @@
 # Machine Learning in Practice
 
-_Machine Learning in Practice projects_
-
 Team coach: Zaheer Babar, [z.babar@cs.ru.nl](z.babar@cs.ru.nl).
 
 
@@ -19,6 +17,6 @@ We can possibly split up the group in two subgroups. One subgroup will continue 
 Official digit recognition TensorFlow tutorial: [https://www.tensorflow.org/tutorials/layers](https://www.tensorflow.org/tutorials/layers).
 
 Best MNIST results so far: 
-[results](http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#4d4e495354)
+[results](http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html#4d4e495354).
 
 
