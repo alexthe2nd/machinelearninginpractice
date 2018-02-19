@@ -21,3 +21,5 @@ Best MNIST results so far:
 
 How to implement DropConnect in TensorFlow: 
 [guide](https://nickcdryan.wordpress.com/2017/06/13/dropconnect-implementation-in-python-and-tensorflow/)
+
+Google Colaboratory: https://colab.research.google.com/notebooks/welcome.ipynb
