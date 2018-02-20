@@ -20,3 +20,5 @@ We can possibly split up the group in two subgroups. One subgroup will continue 
 [How to implement DropConnect in TensorFlow](https://nickcdryan.wordpress.com/2017/06/13/dropconnect-implementation-in-python-and-tensorflow/)
 
 [Google Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb)
+
+[Use Tensorboard in combination with Google Colaboratory](https://stackoverflow.com/questions/47818822/can-i-use-tensorboard-with-google-colab)
