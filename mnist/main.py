@@ -137,7 +137,7 @@ def main(_):
   with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
     for i in range(1000):
-      batch = mnist.train.next_batch(50)
+      batch = mnist.train.next_batch(128)
       if i % 100 == 0:
         train_accuracy = accuracy.eval(feed_dict={
             x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0})

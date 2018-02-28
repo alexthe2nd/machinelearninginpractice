@@ -9,6 +9,15 @@ Team coach: Zaheer Babar, [z.babar@cs.ru.nl](z.babar@cs.ru.nl).
 * Learn how to export your model so you don't have to retrain the CNN again
 
 
+## Description
+### Initial version
+The initial version was run on 5000 iterations, with minibatches of 128. This resulted in a test accuracy of 0.9895 (1.05% error rate).
+
+The network was constructed as follows:
+reshape -> conv1_5x5 -> max_pool_2x2 -> conv2_5x5 -> max_pool_2x2 -> fully_connected_layer_1024 -> dropout_0.5 -> fully_connected_layer_10
+
+
+
 ### Roadmap
 After everybody has been set up with the system, we're going to tweak the neural network. 
 We can possibly split up the group in two subgroups. One subgroup will continue on tinkering the neural network, the other group will use other methods. In this way, we can use ensemble learning.
