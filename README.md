@@ -10,6 +10,9 @@ Team coach: Zaheer Babar, [z.babar@cs.ru.nl](z.babar@cs.ru.nl).
 
 
 ## Description
+### Running
+The system can be easily run by copying the code into [Google Colab](colab.research.google.com), which runs it extremely fast.
+
 ### Initial version
 The initial version was run on 5000 iterations, with minibatches of 128. This resulted in a test accuracy of 0.9895 (1.05% error rate).
 
