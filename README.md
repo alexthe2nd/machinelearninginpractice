@@ -17,7 +17,7 @@ The network was constructed as follows:
 reshape -> conv1_5x5 -> max_pool_2x2 -> conv2_5x5 -> max_pool_2x2 -> fully_connected_layer_1024 -> dropout_0.5 -> fully_connected_layer_10
 
 ### DropConnect version
-The DropConnect version (see ![Regularization of Neural Networks using DropConnect](https://cs.nyu.edu/~wanli/dropc/)) replaces the Dropout layer of the initial version with DropConnect 0.5. After 5000 iteratoins, an test accuracy of 0.99 (1.0% error rate) was achieved.
+The DropConnect version (see [Regularization of Neural Networks using DropConnect](https://cs.nyu.edu/~wanli/dropc/)) replaces the Dropout layer of the initial version with DropConnect 0.5. After 5000 iteratoins, an test accuracy of 0.99 (1.0% error rate) was achieved.
 
 ### Roadmap
 After everybody has been set up with the system, we're going to tweak the neural network. 
