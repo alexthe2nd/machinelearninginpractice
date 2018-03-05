@@ -9,7 +9,19 @@ Team coach: Zaheer Babar, [z.babar@cs.ru.nl](z.babar@cs.ru.nl).
 * Learn how to export your model so you don't have to retrain the CNN again
 
 
-### Roadmap
+### Before next week
+
+### Planning
+***Improving the training set*** X people are going to improve the training dataset by (de)centering it and mutating it. Other methods have used this approach to get more training samples. Rick and Tristan. Afterwards, improve Zalando.
+
+***Getting a list of potential improvements*** Literature research on potential improvements. Title + short description + link to source material. Ankur and Brigel are going to research improvements on NN, Luca, Alex are going to research improvements on other techniques. Deadline next week.
+
+### Next week
+***Split up*** we'll assign potential improvements to groups of two and get performance.
+
+***Discuss results*** How is the model built (#num layers, size, etc.), dataset used. Discuss further.
+
+
 After everybody has been set up with the system, we're going to tweak the neural network. 
 We can possibly split up the group in two subgroups. One subgroup will continue on tinkering the neural network, the other group will use other methods. In this way, we can use ensemble learning.
 
