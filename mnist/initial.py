@@ -18,6 +18,8 @@ from tensorflow.examples.tutorials.mnist import input_data
 
 import tensorflow as tf
 
+from mnist.helpers.preprocess import PreProcesser
+
 FLAGS = None
 
 
@@ -107,8 +109,7 @@ def bias_variable(shape):
 
 def main(_):
   # Import data
-  mnist = input_data.read_data_sets(FLAGS.data_dir)
-  print(mnist.train.labels)
+  mnist = PreProcesser.load('MNIST_data/dataset_ratio_1_no_augmentation.pkl')
 
   # Create the model
   x = tf.placeholder(tf.float32, [None, 784])
