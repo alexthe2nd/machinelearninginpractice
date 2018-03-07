@@ -108,6 +108,7 @@ def bias_variable(shape):
 def main(_):
   # Import data
   mnist = input_data.read_data_sets(FLAGS.data_dir)
+  print(mnist.train.labels)
 
   # Create the model
   x = tf.placeholder(tf.float32, [None, 784])

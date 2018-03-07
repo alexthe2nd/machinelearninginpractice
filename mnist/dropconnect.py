@@ -10,6 +10,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import numpy as np
 import argparse
 import sys
 import tempfile
@@ -17,6 +18,8 @@ import tempfile
 from tensorflow.examples.tutorials.mnist import input_data
 
 import tensorflow as tf
+
+from mnist.helpers.preprocess import PreProcesser
 
 FLAGS = None
 
@@ -106,16 +109,28 @@ def bias_variable(shape):
   initial = tf.constant(0.1, shape=shape)
   return tf.Variable(initial)
 
+def next_batch(num, data, labels):
+    '''
+    Return a total of `num` random samples and labels.
+    '''
+    idx = np.arange(0 , len(data))
+    np.random.shuffle(idx)
+    idx = idx[:num]
+    data_shuffle = [data[ i] for i in idx]
+    labels_shuffle = [labels[ i] for i in idx]
+
+    return np.asarray(data_shuffle), np.asarray(labels_shuffle)
+
 
 def main(_):
   # Import data
-  mnist = input_data.read_data_sets(FLAGS.data_dir)
+  mnist = PreProcesser.load('Fashion-MNIST/dataset_ratio_1_no_augmentation.pkl')
 
   # Create the model
-  x = tf.placeholder(tf.float32, [None, 784])
+  x = tf.placeholder(tf.float32, [None, 784], name='X')
 
   # Define loss and optimizer
-  y_ = tf.placeholder(tf.int64, [None])
+  y_ = tf.placeholder(tf.int64, [None], name='y')
 
   # Build the graph for the deep net
   y_conv, keep_prob = deepnn(x)
@@ -139,8 +154,8 @@ def main(_):
   with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
     for i in range(5000):
-      batch = mnist.train.next_batch(128)
-      if i % 100 == 0:
+      batch = next_batch(128, mnist.train['images'], mnist.train['labels'])
+      if i % 50 == 0:
         train_accuracy = accuracy.eval(feed_dict={
             x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0})
         print('step %d, training accuracy %g' % (i, train_accuracy))
