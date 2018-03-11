@@ -155,4 +155,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# Saved datasets
+*.pkl
+
 /log/

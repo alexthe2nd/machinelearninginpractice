@@ -12,6 +12,7 @@ from __future__ import print_function
 
 import argparse
 import sys
+import numpy as np
 import tempfile
 
 from tensorflow.examples.tutorials.mnist import input_data
@@ -107,9 +108,22 @@ def bias_variable(shape):
   return tf.Variable(initial)
 
 
+def next_batch(num, data, labels):
+    '''
+    Return a total of `num` random samples and labels.
+    '''
+    idx = np.arange(0 , len(data))
+    np.random.shuffle(idx)
+    idx = idx[:num]
+    data_shuffle = [data[ i] for i in idx]
+    labels_shuffle = [labels[ i] for i in idx]
+
+    return np.asarray(data_shuffle), np.asarray(labels_shuffle)
+
+
 def main(_):
-  # Import data
-  mnist = PreProcesser.load('MNIST_data/dataset_ratio_1_no_augmentation.pkl')
+  # Import data, when not existing, first use preprocess to create data
+  mnist = PreProcesser.load('./MNIST_data/dataset_ratio_1_no_augmentation.pkl')
 
   # Create the model
   x = tf.placeholder(tf.float32, [None, 784])
@@ -139,7 +153,7 @@ def main(_):
   with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
     for i in range(1000):
-      batch = mnist.train.next_batch(128)
+      batch = next_batch(128, mnist.train['images'], mnist.train['labels'])
       if i % 100 == 0:
         train_accuracy = accuracy.eval(feed_dict={
             x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0})
