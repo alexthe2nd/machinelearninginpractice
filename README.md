@@ -4,22 +4,32 @@ Team coach: Zaheer Babar, [z.babar@cs.ru.nl](z.babar@cs.ru.nl).
 
 
 ## Digit Recognition competition on [kaggle.com](https://kaggle.com/)
+
+## Planning
+### Deadline March 5th
 5th of March individual goal:
 * Get TensowFlow running with a digit recognition algorithm
 * Learn how to export your model so you don't have to retrain the CNN again
 
-## Planning
+### Deadline March 12th
 ***Improving the training set*** X people are going to improve the training dataset by (de)centering it and mutating it. Other methods have used this approach to get more training samples. Rick and Tristan. Afterwards, improve Zalando.
 
 ***Getting a list of potential improvements*** Literature research on potential improvements. Title + short description + link to source material. Ankur and Brigel are going to research improvements on NN, Luca, Alex are going to research improvements on other techniques. Deadline next week.
 
-### Next week
-***Split up*** we'll assign potential improvements to groups of two and get performance.
+### Deadline March 19th
+We've split up the groups in a few groups that will work on various topics. For these topics, some interesting papers have been added in the folder `/literature/`. Results will be compared to the baseline CNN as described in the Tensorflow tutorial, implemented in [mnist/initial.py](mnist/initial.py).
 
-***Discuss results*** How is the model built (#num layers, size, etc.), dataset used. Discuss further.
+| Who               	| What                                                                       	| Dataset             	|
+|-------------------	|----------------------------------------------------------------------------	|---------------------	|
+| Laurens & Tristan 	| Various methods of Augmentation on Baseline and DropConnect + Presentation 	| MNIST and Zalando   	|
+| Rick              	| On The Fly Augmentation                                                    	| MNIST               	|
+| Alex & Luca       	| Random Forests + XGBoost                                                   	| Non-Augmented MNIST 	|
+| Ankur & Brigel    	| BinaryConnect + Network in Network                                         	| Non-Augmented MNIST 	|
 
-After everybody has been set up with the system, we're going to tweak the neural network. 
-We can possibly split up the group in two subgroups. One subgroup will continue on tinkering the neural network, the other group will use other methods. In this way, we can use ensemble learning.
+You'll be documenting your process and describe your findings. This will consists of one paragraph, which answers the following questions:
+* What has been done in other research and what contributed to their success?
+* What have you done to improve on results? What is the stucture of your neural network and what hyperparameters did you use?
+* What results (% error rate) did you get?
 
 ## Description
 ### Running
