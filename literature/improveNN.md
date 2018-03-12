@@ -19,3 +19,16 @@ complementary to base models and a single high resolution model is as valuable a
 additional base models
 
 Paper: https://arxiv.org/ftp/arxiv/papers/1312/1312.5402.pdf
+
+## Singular Value Bounding 
+
+The paper investigates network properties that can lead to good performance. Research is inspired by the usage of
+orthogonal matrices to initialize networks in order to inspect how orthogonal weight matrices perform when network 
+training converges. The authors of the paper propose to constrain the solutionsof weight matrices in the orthogonal 
+feasible set during the whole process of network training, and achieve this by a simple yet effective method called 
+Singular Value Bounding (SVB). In SVB, all singular values of each weight matrix are simply  bounded in a narrow band 
+around the value of 1. Based on the same motivation they propose using Bounded Batch Normalization (BBN). Experiments on
+benchmark image classification datasets show the efficacy of our proposed SVB and BBN. The results achieved are 3.06% error
+rate on CIFAR10 and 16.90% on CIFAR100, using off-the-shelf network architectures (Wide ResNets).  
+
+Paper: https://arxiv.org/pdf/1611.06013.pdf
