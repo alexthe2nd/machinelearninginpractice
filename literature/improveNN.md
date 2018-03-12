@@ -1,8 +1,10 @@
 ## Data transformations for training and testing
 
-When more training data is not available, difference transformations to the existing training and test data
+When more training data is not available, different transformations to the existing training and test data
 are used to augment the sets and hence improve the current state of the art deep convolutional neural network
 based image classification pipeline.
+
+Transformations:
 
 - Extending image crops into extra pixels
 - Color manipulations 
