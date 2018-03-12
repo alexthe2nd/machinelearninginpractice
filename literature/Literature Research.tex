@@ -69,4 +69,25 @@ Paper found \href{https://arxiv.org/pdf/1412.6071.pdf}{\color{blue}here}.\\
 Not sure how hard this is to implement.
 If we do not manage to do this, then we should at least take a look at overlapping max-pooling ($3\times3$, stride = 2), because it looks promising.
 
+\newpage
+\section{Other improvements}
+Some general improvements to CNN's from the ISMI course:
+\begin{enumerate}[topsep=6pt,itemsep=3pt]
+	\item Trying different activation functions than ReLU such as PReLU, LeakyReLU, etc.
+	\item Use valid convolutions (no padding).
+	\item Initialize the kernel with Glorot or He to speed up learning.
+	\item Try L1 or L2 regularization.
+	This might not work too well combined with Dropout/DropConnect because both go against overfitting: we might end up underfitting.
+	\item Add a batch normalization layer before or after the activation function of a dense/convolutional layer, see what works better.
+	(I've read that adding it after the activation function works better in practice)
+	\item If we use SGD as an optimizer we should play around with the (Nesterov) momentum parameter.
+	However, I expect we are going to use ADAM.
+	\item There have been some great results with fully convolutional networks (without dense layers) on the CIFAR10 data set.
+	I'm not sure if it's any good for MNIST because small CNN's seems to give great results, but it might be worth trying.
+	\item Some networks (such as AlexNet) augment images even when testing, resulting in a small improvement.
+	For example: take 5 patches from the original image, and mirror them left-to-right.
+	This creates 10 images from the original image.
+	We can let the network score each image individually and aggregate the scores to classify the original image.
+\end{enumerate}
+
 \end{document}
