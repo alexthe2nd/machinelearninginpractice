@@ -1,5 +1,6 @@
-from mnist.helpers.preprocess import PreProcesser
 from imgaug import augmenters as iaa
+
+from mnist.preprocess import PreProcesser
 
 if __name__ == '__main__':
 	dataset = PreProcesser.load_files(folder='./MNIST_data/')
