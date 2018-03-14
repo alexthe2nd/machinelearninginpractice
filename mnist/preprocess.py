@@ -8,8 +8,8 @@ import numpy as np
 from tensorflow.contrib.learn.python.learn.datasets import base
 from tensorflow.contrib.learn.python.learn.datasets.mnist import read_data_sets
 from imgaug import augmenters as iaa
-from tqdm import tqdm
 
+from tqdm import tqdm
 
 class PreProcesser():
 	def __init__(self):
