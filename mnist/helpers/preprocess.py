@@ -10,6 +10,7 @@ from tensorflow.contrib.learn.python.learn.datasets.mnist import read_data_sets
 from imgaug import augmenters as iaa
 from tqdm import tqdm
 
+
 class PreProcesser():
 	def __init__(self):
 		pass
@@ -58,13 +59,13 @@ class PreProcesser():
 		# Loop all training images
 		for i in tqdm(range(augmented_ratio * training_length), desc="Augmenting images", unit="image"):
 			# Augment images
-			train_images.append(np.reshape(augmenter.augment_image(dataset.train.images[i % training_length].reshape(28, 28, 1)), 784))
+			train_images.append(
+				np.reshape(augmenter.augment_image(dataset.train.images[i % training_length].reshape(28, 28, 1)), 784))
 
 			# Append corresponding label
 			train_labels.append(dataset.train.labels[i % training_length])
 
-
-		train = dict(images=train_images, labels=train_labels)
+		train = Dataset(train_images, train_labels)
 		validation = dataset.validation
 		test = dataset.test
 		return base.Datasets(train=train, validation=validation, test=test)
@@ -82,6 +83,12 @@ class PreProcesser():
 			return read_data_sets(folder, source_url=source_url, one_hot=False)
 		else:
 			return read_data_sets(folder, one_hot=False)
+
+class Dataset:
+	def __init__(self, images, labels):
+		self.images = images
+		self.labels = labels
+
 
 if __name__ == '__main__':
 	dataset = PreProcesser.load_files()
