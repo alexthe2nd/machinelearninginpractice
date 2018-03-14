@@ -1,8 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from mnist.helpers.preprocess import PreProcesser
 
-data = PreProcesser.load('MNIST_data/DC/dc_crop.pkl')
+from mnist.preprocess import PreProcesser
+
+data = PreProcesser.load('MNIST_data/DC1/dc_piecewise_affine.pkl')
 def plot(image):
 	# The rest of columns are pixels
 	pixels = image * 255
@@ -20,4 +21,4 @@ def plot(image):
 	plt.imshow(pixels, cmap='gray')
 	plt.show()
 
-plot(data.train.images[2][:])
+plot(data.train.images[0][:])

@@ -10,16 +10,13 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import numpy as np
 import argparse
 import sys
-import tempfile
 
-from tensorflow.examples.tutorials.mnist import input_data
-
+import numpy as np
 import tensorflow as tf
 
-from mnist.helpers.preprocess import PreProcesser
+from mnist.preprocess import PreProcesser
 
 FLAGS = None
 
@@ -72,7 +69,7 @@ def deepnn(x):
 
   # Dropout - controls the complexity of the model, prevents co-adaptation of
   # features.
-  with tf.name_scope('dropout'):
+  with tf.name_scope('dropconnect'):
     keep_prob = tf.placeholder(tf.float32)
     h_fc1_drop = dropconnect(h_fc1, keep_prob)
 
@@ -124,7 +121,7 @@ def next_batch(num, data, labels):
 
 def main(_):
   # Import data
-  mnist = PreProcesser.load('Fashion-MNIST/dataset_ratio_1_no_augmentation.pkl')
+  mnist = PreProcesser.load('MNIST_data/DC/dc_crop.pkl')
 
   # Create the model
   x = tf.placeholder(tf.float32, [None, 784], name='X')
@@ -154,7 +151,7 @@ def main(_):
   with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
     for i in range(5000):
-      batch = next_batch(128, mnist.train['images'], mnist.train['labels'])
+      batch = next_batch(128, mnist.train.images, mnist.train.labels)
       if i % 50 == 0:
         train_accuracy = accuracy.eval(feed_dict={
             x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0})
