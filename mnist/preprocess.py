@@ -2,7 +2,7 @@
 Pre-processing class.
 
 """
-import pickle
+import dill
 import gzip
 import numpy as np
 from tensorflow.contrib.learn.python.learn.datasets import base
@@ -25,7 +25,7 @@ class PreProcesser():
 		assert isinstance(filename, str)
 		print("Saving augmented images")
 		file = gzip.open(filename, 'wb')
-		pickle.dump(dataset, file)
+		dill.dump(dataset, file)
 		file.close()
 		print("Saving completed")
 
@@ -38,7 +38,7 @@ class PreProcesser():
 		print("Loading augmented images")
 		assert isinstance(filename, str)
 		file = gzip.open(filename, 'rb')
-		dataset = pickle.load(file)
+		dataset = dill.load(file)
 		file.close()
 		print("Loading completed")
 		return dataset
