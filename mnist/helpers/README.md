@@ -6,6 +6,11 @@ LeCun et al. (1998) [3] also show a decreasing error rate using affine deformati
 Thus, we may conclude that augmentation of training data may have an impact on the error rate.
 
 ## Usage
+### Installing
+Run this before running your program:
+```
+pip install imgaug
+```
 ### Augmenting a dataset
 As we want the augmented dataset to be the same for every training session, a dataset can be generated and saved. We use `imgaug`, a library that can deform images. In the example, every training sample is rotated between -15◦ and 15◦, with a 30% chance of that happening. Furthermore, we can define a `augmentation_size`, which indicates how big the newly generated data set will be in comparison to the initial data set. For more information about defining other deformations, see [imgaug](http://imgaug.readthedocs.io/en/latest/source/augmenters.html).
 ```
