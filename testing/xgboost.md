@@ -2,9 +2,13 @@
 
 *After repeated environment issues, I drunkenly fixed everything on Saturday night.*
 
-Initial testing results had an accuracy of 93.81%. I will attempt to implement some improvements on Sunday night and Monday morning, and find out how it performs.
+Initial testing results had an accuracy of 93.81%. 
 
-Script: 
+~~I will attempt to implement some improvements on Sunday night and Monday morning, and find out how it performs.~~ Responsibilities popped up at home, and I couldn't work on it anymore. Sorry about that. 
+
+*- Alex S.*
+
+Basic script, with some unused imports: 
 ```python
 from __future__ import absolute_import
 from __future__ import division
