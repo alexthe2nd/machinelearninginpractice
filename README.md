@@ -31,6 +31,30 @@ You'll be documenting your process and describe your findings. This will consist
 * What have you done to improve on results? What is the stucture of your neural network and what hyperparameters did you use?
 * What results (% error rate) did you get?
 
+### Meeting March 19th
+Alex shared his XGBoost, which reaches an accuracy of 93%, which will be a no-go, as Luca tried to improve it, which did not have any effect.
+
+Rick worked on on-the-fly data augmentation. Keras has some features (rotation, shifting, shearing, zooming) implemented. Rick tested it with Elastic transformations. Rotation, shear and zoom seemed to show increased results. He wants to try PieceWiseAffine (elastic stretching).
+
+Bridgel and Ankur worked together, but split during the weekend. Bridgel was not able to get the models working. Ankur found another implementation, but doesn't know how it works. They didn't have time to test Network in Network and will do that next week.
+
+Tristan and Laurens have been working on various methods of augmentation, but didn't come to testing it actually.
+
+On-The-Fly augmentation vs. pre-generated augmentation. OTF takes more time. For testing a pre-generated dataset is usefull, but when we eventually want to generate a final result, we can better use OTF.
+
+Were switching to Keras.
+
+Rick proposes to research `resampling`, a method that focusses on putting more weight to wrongly classified training samples. For more information how to get wrongly classified training samples, see [this](https://stackoverflow.com/questions/39300880/how-to-find-wrong-prediction-cases-in-test-set-cnns-using-keras).
+
+### Deadlines March 26th
+| Who               	| What                                                                       	| Dataset             	|
+|-------------------	|----------------------------------------------------------------------------	|---------------------	|
+| Laurens & Tristan 	| Kaggle MNIST + Augmentations (switching to Keras)                           | MNIST and Zalando   	|
+| Rick              	| On The Fly Augmentation                                                    	| MNIST               	|
+| Alex & Luca       	| Ensemble learning (train X neural networks with a get_batch that implements bootstrapping) and then get the majority vote) 	| Non-Augmented MNIST 	|
+| Ankur & Brigel    	| Network in Network                                         	                | Non-Augmented MNIST 	|
+
+
 ## Description
 ### Running
 The system can be easily run by copying the code into [Google Colab](colab.research.google.com), which runs it extremely fast.
