@@ -43,8 +43,36 @@ if __name__ == '__main__':
 	PreProcesser.save(flipped_dataset, 'MNIST_data/DC1/dc_flip.pkl')
 
 	# Random crop
+	# Picks a 24x24 patch from the image and scales it back up to 28x28
+	offset = 3 # nr of pxs the crop will be offset from the side (pick 3 or 4, picking 2 results in center crops only)
+	# What we really want here is take all 5 patches so the dataset size increases fivefold.
+	# However, that requires creating five augmenters, because of how the framework works right now.
 	crop_augmenter = iaa.OneOf([
-		iaa.Affine(scale=(1.1, 1.2))
+		# topleft
+		iaa.Sequential([
+			iaa.Crop(px=(4 - offset, offset, offset, 4 - offset)),
+			iaa.Affine(scale=1.166666667)
+		]),
+		# topright
+		iaa.Sequential([
+			iaa.Crop(px=(4 - offset, 4 - offset, offset, offset)),
+			iaa.Affine(scale=1.166666667)
+		]),
+		# botleft
+		iaa.Sequential([
+			iaa.Crop(px=(offset, offset, 4 - offset, 4 - offset)),
+			iaa.Affine(scale=1.166666667)
+		]),
+		# botright
+		iaa.Sequential([
+			iaa.Crop(px=(offset, 4 - offset, 4 - offset, offset)),
+			iaa.Affine(scale=1.166666667)
+		]),
+		# center
+		iaa.Sequential([
+			iaa.Crop(px=(2, 2, 2, 2)),
+			iaa.Affine(scale=1.166666667)
+		])
 	])
 	cropped_dataset = PreProcesser.augment_mnist_data(flipped_dataset, augmenter=crop_augmenter, augmented_ratio=1)
 	PreProcesser.save(cropped_dataset, 'MNIST_data/DC1/dc_crop.pkl')
