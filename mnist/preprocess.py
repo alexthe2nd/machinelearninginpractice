@@ -48,7 +48,7 @@ class PreProcesser():
 		df_train = pd.read_csv('{}train.csv'.format(input_folder))
 		df_test = pd.read_csv('{}test.csv'.format(input_folder))
 		df_train_images  = df_train.iloc[:, 1:].values / 255
-		df_train_labels  = df_train.iloc[:, :1].values
+		df_train_labels  = df_train.iloc[:, :1].values.flatten()
 
 		df_test_images	= df_test.iloc[:, 0:].values / 255
 
