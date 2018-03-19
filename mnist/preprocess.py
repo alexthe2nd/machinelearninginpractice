@@ -8,7 +8,7 @@ import numpy as np
 from tensorflow.contrib.learn.python.learn.datasets import base
 from tensorflow.contrib.learn.python.learn.datasets.mnist import read_data_sets
 from imgaug import augmenters as iaa
-
+import pandas as pd
 from tqdm import tqdm
 
 class PreProcesser():
@@ -44,6 +44,19 @@ class PreProcesser():
 		return dataset
 
 	@staticmethod
+	def load_csv(input_folder = './MNIST_data/'):
+		df_train = pd.read_csv('{}train.csv'.format(input_folder))
+		df_test = pd.read_csv('{}test.csv'.format(input_folder))
+		df_train_images  = df_train.iloc[:, 1:].values / 255
+		df_train_labels  = df_train.iloc[:, :1].values
+
+		df_test_images	= df_test.iloc[:, 0:].values / 255
+
+		return base.Datasets(train=Dataset(df_train_images, df_train_labels), test=Dataset(df_test_images, np.zeros(len(df_test_images))), validation=None)
+
+
+
+	@staticmethod
 	def augment_mnist_data(dataset, augmenter, augmented_ratio=1):
 		"""
 		Augments a data set and returns it.
@@ -66,9 +79,9 @@ class PreProcesser():
 			train_labels.append(dataset.train.labels[i % training_length])
 
 		train = Dataset(train_images, train_labels)
-		validation = dataset.validation
+
 		test = dataset.test
-		return base.Datasets(train=train, validation=validation, test=test)
+		return base.Datasets(train=train, test=test, validation=None)
 
 	@staticmethod
 	def load_files(folder='../MNIST_data/', source_url=None):
@@ -100,11 +113,12 @@ class Dataset:
 
 
 if __name__ == '__main__':
-	dataset = PreProcesser.load_files()
+	dataset = PreProcesser.load_csv()
+	PreProcesser.save(dataset, 'MNIST_data/TEST/default.pkl')
 	augmenter = iaa.OneOf([
-		iaa.Sometimes(0.3, [
-			iaa.Affine(rotate=(-0.15, 0.15))
-		])
+	 	iaa.Sometimes(0.3, [
+	 		iaa.Affine(rotate=(-0.15, 0.15))
+	 	])
 	])
-	aug_dataset = PreProcesser.augment_mnist_data(dataset, augmenter=augmenter, augmented_ratio=2)
-	PreProcesser.save(aug_dataset, '../MNIST_data/saved_dataset_1.pkl')
+	aug_dataset = PreProcesser.augment_mnist_data(dataset, augmenter=augmenter, augmented_ratio=1)
+	PreProcesser.save(aug_dataset, 'MNIST_data/TEST/aug.pkl')

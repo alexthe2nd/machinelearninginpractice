@@ -26,28 +26,28 @@ if __name__ == '__main__':
 	dataset = PreProcesser.load_files(folder='./MNIST_data/')
 
 	# Original MNIST dataset
-	PreProcesser.save(dataset, 'MNIST_data/DC/dc_default.pkl')
+	PreProcesser.save(dataset, 'MNIST_data/DC1/dc_default.pkl')
 
 	#plot(dataset.train.images[0][:])
 
 	double_augmenter = iaa.OneOf([
 
 	])
-	double_dataset = PreProcesser.augment_mnist_data(dataset, augmenter=double_augmenter, augmented_ratio=1)
-	PreProcesser.save(double_dataset, 'MNIST_data/DC/dc_double.pkl')
+	double_dataset = PreProcesser.augment_mnist_data(dataset, augmenter=double_augmenter, augmented_ratio=4)
+	PreProcesser.save(double_dataset, 'MNIST_data/DC1/dc_double.pkl')
 
 	flip_augmenter = iaa.OneOf([
 		iaa.Fliplr(0.5)
 	])
 	flipped_dataset = PreProcesser.augment_mnist_data(double_dataset, augmenter=flip_augmenter, augmented_ratio=1)
-	PreProcesser.save(flipped_dataset, 'MNIST_data/DC/dc_flip.pkl')
+	PreProcesser.save(flipped_dataset, 'MNIST_data/DC1/dc_flip.pkl')
 
 	# Random crop
 	crop_augmenter = iaa.OneOf([
 		iaa.Affine(scale=(1.1, 1.2))
 	])
 	cropped_dataset = PreProcesser.augment_mnist_data(flipped_dataset, augmenter=crop_augmenter, augmented_ratio=1)
-	PreProcesser.save(cropped_dataset, 'MNIST_data/DC/dc_crop.pkl')
+	PreProcesser.save(cropped_dataset, 'MNIST_data/DC1/dc_crop.pkl')
 
 	#plot(cropped_dataset.train.images[0][:])
 

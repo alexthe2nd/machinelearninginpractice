@@ -121,7 +121,7 @@ def next_batch(num, data, labels):
 
 def main(_):
   # Import data
-  mnist = PreProcesser.load('MNIST_data/DC/dc_crop.pkl')
+  mnist = PreProcesser.load('MNIST_data/TEST/default.pkl')
 
   # Create the model
   x = tf.placeholder(tf.float32, [None, 784], name='X')
