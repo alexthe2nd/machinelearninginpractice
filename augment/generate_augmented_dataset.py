@@ -51,7 +51,9 @@ def get_crops(x_train, y_train, offset=4):
 
 
 def augment(train_images, train_labels, augmenter):
+	# result_images = []
 	result_images = train_images
+	# train_labels = train_labels
 	train_labels = train_labels * 2
 	for i in tqdm(range(len(train_images))):
 		result_images.append(augmenter.augment_image(train_images[i]))
