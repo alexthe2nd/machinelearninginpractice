@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+
+\begin{document}
+\section*{About data augmentation}
+\section{Multi-column Deep Neural Networks for Image Classification}
+In this paper \cite{ciregan2012multi}, they used random translation to decrease the error of classification on MNIST from .28\% to .20\% (with a 2 layer convolution network). Scaling (up to 15\% and rotations of 15\% also increased the performance.
+
+
+\section{Flexible, High Performance Convolutional Neural Networks for Image Classification} 
+This paper \cite{ciresan2011flexible} used Affine (translation, rotation, scaling, horizontal shearing) and elastic deformations in an online fashion. to deform the images of MNIST. They do not mention what the improvents are and whether they exist.
+
+\section{ImageNet Classification with Deep Convolutional Neural Networks}
+This paper \cite{krizhevsky2012imagenet} uses a form of patch augmentation. It takes patches of the image, transforms them and then trains on the transformed patches.
+However, I doubt whether this will work on the MNIST set, since the images used in the paper are 224 x 224, but the MNIST set uses 32x32 images, making patches to small to process.
+
+\section{Testresults}
+For now, using Keras, it is possible to test whether the results of the model improve.
+results:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|c|c|c}
+    Augmentation type & Accuracy^1 & Overfitting^2 & time per epoch \\ \hline
+    No augmentation & 95.10 & yes & 5 sec \\
+    0-15 degree rotation & 96.46 & no & 13 sec.\\ 
+    0 - 0.2 width shift & 95.53 & no & 13 sec\\ 
+    0 - 0.2 height shift & 95.01 & no & 12 sec\\ 
+    0 - 0.2 shear & 96.06 & yes & 12 sec\\
+    0.8-1.2 zoom & 95.62 & yes & 13 sec\\
+    1 - 1.2 zoom & 95.46 & yes & 13 sec\\
+    0.8 - 1 zoom & 96.05 & yes & 13 sec\\
+    rotation, shear, zoom & 94.90 & yes & 15 sec\\
+    elastic\_ transform & ---& --- & 1:08 min\\
+    \end{tabular}
+    \caption{1: validation accuracy after 5 epochs; 2: overfitting is defined as training accuracy being bigger than validation accuracy after 5 epochs}
+    \label{tab:my_label}
+\end{table}
+
+
+\bibliography{ref.bib}
+\bibliographystyle{plain}
+\end{document}
