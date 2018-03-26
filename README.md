@@ -54,6 +54,21 @@ Rick proposes to research `resampling`, a method that focusses on putting more w
 | Alex & Luca       	| Ensemble learning (train X neural networks with a get_batch that implements bootstrapping) and then get the majority vote) 	| Non-Augmented MNIST 	|
 | Ankur & Brigel    	| Network in Network                                         	                | Non-Augmented MNIST 	|
 
+### Progress report March 26th
+Tristan & Laurens: Augmentation didn't go as planned, results that not met the baseline. Zaheer advises to use transfer learning with a pre-trained model and not focus on input data but rather the technique.
+
+Ankur & Brigel: BinaryConnect. Training did take way too long. Only an accuracy of 27% was archieved. Network in Network went better, archieved 98.75% accuracy on the on-machine validation set. Ankur thinks that the network doesn't use normalization without dropout/dropconnect.
+
+Rick: worked on OTF-augmentation. Batch-creator is running now. 
+
+### Deadline April 3rd
+Tristan & Laurens: ensembling & importing pretrained models. 
+
+Rick: OTF-augmentation, with the augmentation used by Tristan & Laurens before.
+
+Ankur: modify Network in Network. 
+
+Brigel: Fully Convolutional networks or Network in Network.
 
 ## Description
 ### Running
