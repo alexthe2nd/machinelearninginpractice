@@ -70,6 +70,10 @@ Ankur: modify Network in Network.
 
 Brigel: Fully Convolutional networks or Network in Network.
 
+Tristan: setup LaTeX.
+
+_ALL NEURAL NETWORKS SHOULD BE WRITTEN USING THE KERAS FUNCTIONAL API, WHICH WE CAN USE TO CREATE AN ENSEMBLE_
+
 ## Description
 ### Running
 The system can be easily run by copying the code into [Google Colab](colab.research.google.com), which runs it extremely fast.
