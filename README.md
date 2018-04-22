@@ -4,4 +4,4 @@ _URL: [https://www.kaggle.com/c/imaterialist-challenge-fashion-2018/data](https:
 ## Planning
 
 ### April 23
-
+_Still waiting for access to the Google Cloud Platform._
