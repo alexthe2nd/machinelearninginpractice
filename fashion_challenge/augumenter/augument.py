@@ -1,3 +1,4 @@
+# Uses the Pillow library (pip3 install pillow).
 from PIL import Image
 from PIL import ImageFilter
 from random import randint
