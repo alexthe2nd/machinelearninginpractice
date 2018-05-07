@@ -15,4 +15,5 @@ Zaheer asks about class balancing. A general approach can be a different thresho
 
 ### To implement
 * _Class balancing (preprocessing)._
-* Generate baseline test on GCP, with Ixeption, VGG16, VGG19 and other pre-trained models to get a baseline.
+* Generate baseline test on GCP, with Exception, VGG16, VGG19 and other pre-trained models to get a baseline.
+* Cross-validation (however the number-of-labels-per-sample shouldn't be a problem)
