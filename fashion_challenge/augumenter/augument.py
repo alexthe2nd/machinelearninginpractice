@@ -110,5 +110,5 @@ def aug(image, effect = '2', min_size = 299, fill_color = "white"):
     im = Image.open(image)
     apply_rotation_lr(im)
     augumented = make_square(random_effect(im, effect), min_size, fill_color)
-    augumented.show()
+    # augumented.show()
     return augumented
