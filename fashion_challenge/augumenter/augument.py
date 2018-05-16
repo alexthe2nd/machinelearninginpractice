@@ -4,31 +4,34 @@ from PIL import ImageFilter
 from random import randint
 
 # Weighted random image effect, tends towards horizontal flip.
-def random_effect(im):
-    r = randint(0,9)
-    if (r <= 4):
-        # Contrast Stretching
-        return apply_contrast_stretching(im)
-    elif (r==5):
-        # Rotation from -360 to 360 degrees
-        return apply_rotation_lr(im) 
-    elif (r == 6):
-        # Horizontal flip.
-        return im.transpose(Image.FLIP_LEFT_RIGHT)
-    elif (r == 7):
-        # Smooth - lesser blur.
-        return im.filter(ImageFilter.SMOOTH)
-    elif (r == 8):
-        # Blur.
-        return im.filter(ImageFilter.BLUR)
-    else:
-        # Sharpen.
-        return im.filter(ImageFilter.SHARPEN)
+def random_effect(im, effect):
+    if (effect == 'r'):
+        r = randint(0,9)
+        if (r <= 4):
+            # Contrast Stretching
+            return apply_contrast_stretching(im)
+        elif (r==5):
+            # Rotation from -360 to 360 degrees
+            return apply_rotation_lr(im)
+        elif (r == 6):
+            # Horizontal flip.
+            return im.transpose(Image.FLIP_LEFT_RIGHT)
+        elif (r == 7):
+            # Smooth - lesser blur.
+            return im.filter(ImageFilter.SMOOTH)
+        elif (r == 8):
+            # Blur.
+            return im.filter(ImageFilter.BLUR)
+        else:
+            # Sharpen.
+            return im.filter(ImageFilter.SHARPEN)
 
-        """
-        # Greyscale
-        img_bw = image.convert('L')
-        """
+            """
+            # Greyscale
+            img_bw = image.convert('L')
+            """
+    else:
+        return im
 
 # Crop and resize
 def make_square(im, min_size, fill_color):
@@ -45,40 +48,40 @@ def make_square(im, min_size, fill_color):
 
 # Process red band of the image
 def normalize_red(intensity):
-    min_pixel_in = 86 
+    min_pixel_in = 86
     max_pixel_in = 230
 
     min_pixel_out = 0
-    max_pixel_out = 255 
+    max_pixel_out = 255
 
     out_pixel = (intensity - min_pixel_in) * (((max_pixel_out - min_pixel_out)/(max_pixel_in - min_pixel_in))+ min_pixel_out)
     return out_pixel
-         
+
 # Process green band of the image
 def normalize_green(intensity):
     min_pixel_in = 90
     max_pixel_in = 225
 
     min_pixel_out = 0
-    max_pixel_out = 255 
+    max_pixel_out = 255
 
     out_pixel = (intensity - min_pixel_in) * (((max_pixel_out - min_pixel_out)/(max_pixel_in - min_pixel_in))+ min_pixel_out)
     return out_pixel
 
 def normalize_blue(intensity):
-     
-    min_pixel_in = 100 
+
+    min_pixel_in = 100
     max_pixel_in = 210
 
     min_pixel_out = 0
-    max_pixel_out = 255 
+    max_pixel_out = 255
 
     out_pixel = (intensity - min_pixel_in) * (((max_pixel_out - min_pixel_out)/(max_pixel_in - min_pixel_in))+ min_pixel_out)
     return out_pixel
 
 def apply_contrast_stretching(image_object):
-    
-    # Split R, G, B bands from the image. 
+
+    # Split R, G, B bands from the image.
 
     multi_bands = image_object.split()
 
@@ -103,9 +106,9 @@ def apply_rotation_lr(image_object):
     return rotated_img
 
 # Augumenter
-def aug(image, min_size = 299, fill_color = "white"):
+def aug(image, effect = '2', min_size = 299, fill_color = "white"):
     im = Image.open(image)
     apply_rotation_lr(im)
-    augumented = make_square(random_effect(im), min_size, fill_color)
+    augumented = make_square(random_effect(im, effect), min_size, fill_color)
     augumented.show()
     return augumented

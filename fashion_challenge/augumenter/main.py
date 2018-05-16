@@ -17,9 +17,10 @@ for f in files:
 
 """
 Usage of image augumenter:
-- Takes image name, size, and bg color as arguments.
+- Takes image name, effect (leave blank for resizing, use 'r' for applying
+a random effect), size, and bg color as arguments.
 - 'size' defaults to '299', and 'bg_color' to 'white'.
 
 Example function call:
-    image = aug('test.jpg', 512, "black")
+    image = aug('test.jpg', 'r', 512, "black")
 """
